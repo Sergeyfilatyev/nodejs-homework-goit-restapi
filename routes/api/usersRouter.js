@@ -8,6 +8,8 @@ const {
   logoutUserController,
   userSubscriptionController,
   avatarUpdateController,
+  userVerificationController,
+  resendVerifyController,
 } = require("../../controllers/users");
 const {
   userAuthMiddleware,
@@ -26,7 +28,15 @@ router.post(
   validateBody(userSchema.userLogin),
   controllerWrapper(loginUserController)
 );
-
+router.get(
+  "/verify/:verificationToken",
+  controllerWrapper(userVerificationController)
+);
+router.post(
+  "/verify",
+  validateBody(userSchema.userResend),
+  controllerWrapper(resendVerifyController)
+);
 router.get(
   "/current",
   userAuthMiddleware,
