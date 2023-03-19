@@ -1,5 +1,6 @@
 const { User } = require("../../models");
-const { RequestError, sendEmail } = require("../../helpers");
+const { RequestError } = require("../../helpers");
+const { sendEmail } = require("../../service/email");
 const resendVerify = async (email) => {
   const user = await User.findOne({ email });
   if (!user) {

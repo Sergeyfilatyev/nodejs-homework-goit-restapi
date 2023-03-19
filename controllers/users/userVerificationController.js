@@ -1,5 +1,5 @@
 const { userVerification } = require("../../service/users");
-const { htmlResponse } = require("../../helpers");
+const { htmlResponse } = require("../../service/email");
 const userVerificationController = async (req, res) => {
   const { verificationToken } = req.params;
   const { email } = await userVerification(verificationToken);
