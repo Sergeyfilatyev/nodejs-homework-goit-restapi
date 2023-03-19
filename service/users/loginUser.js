@@ -12,6 +12,9 @@ const loginUser = async (email, password) => {
   if (!passwordCompare) {
     throw RequestError(401, `Email or password is wrong `);
   }
+  if (!user.verify) {
+    throw RequestError(401, `User not verified `);
+  }
   const payload = { id: user._id };
   const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "24h" });
   const data = await User.findByIdAndUpdate(user._id, { token }, { new: true });

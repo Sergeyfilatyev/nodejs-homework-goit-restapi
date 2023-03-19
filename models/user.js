@@ -21,7 +21,18 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
-    avatarURL: { type: String, required: true },
+    avatarURL: {
+      type: String,
+      required: true,
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      default: "",
+    },
   },
   { versionKey: false }
 );

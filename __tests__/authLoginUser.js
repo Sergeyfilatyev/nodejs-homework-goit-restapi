@@ -20,6 +20,7 @@ describe("Test auth routes ", () => {
       email: "testuser@test.com",
       password: await bcrypt.hash("password", 10),
       avatarURL: "testlink",
+      verify: true,
     });
   });
 

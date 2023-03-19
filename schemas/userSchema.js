@@ -7,5 +7,8 @@ const userLogin = Joi.object({
 const userSubscription = Joi.object({
   subscription: Joi.string().valid("starter", "pro", "business").required(),
 });
-const userSchema = { userLogin, userSubscription };
+const userResend = Joi.object({
+  email: Joi.string().email().required(),
+});
+const userSchema = { userLogin, userSubscription, userResend };
 module.exports = userSchema;
